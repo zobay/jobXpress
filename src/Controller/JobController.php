@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Job;
 use App\Model\CategoryModel;
 use App\Model\JobModel;
 use Knp\Component\Pager\PaginatorInterface;
@@ -59,9 +60,12 @@ class JobController extends AbstractController
 
     /**
      * @Route("/search", name="search")
+     *
      * @param Request $request
      * @param JobModel $jobModel
      * @param CategoryModel $categoryModel
+     *
+     * @return Response
      */
     public function search(
         Request $request,
@@ -76,6 +80,20 @@ class JobController extends AbstractController
         return $this->render('job/index.html.twig',[
             'categories' => $category,
             'jobs' => $jobs
+        ]);
+    }
+
+    /**
+     * @Route("/show/{id}", name="job_show")
+     *
+     * @param Job $job
+     *
+     * @return Response
+     */
+    public function show(Job $job)
+    {
+        return $this->render('job/detail.html.twig',[
+            'job' => $job
         ]);
     }
 }

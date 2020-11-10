@@ -1,0 +1,13 @@
+{% extends ('base.html.twig') %}
+
+{% block title %} Details {% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <hr>
+    <div class="container">
+        <h4>Position : {{ job.title }}</h4>
+        <h6>Company : {{ job.company }}</h6>
+        <p>Details : {{ job.description }}</p>
+    </div>
+{% endblock %}
