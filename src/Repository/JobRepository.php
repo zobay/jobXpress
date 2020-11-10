@@ -30,15 +30,16 @@ class JobRepository extends ServiceEntityRepository
         ;
     }
 
-    /*
-    public function findOneBySomeField($value): ?Job
+
+    public function getSearchedJobs($value)
     {
         return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
+            ->andWhere('j.location LIKE :val')
+            ->orWhere('j.title LIKE :val')
+            ->orWhere('j.company LIKE :val')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }

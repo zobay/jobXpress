@@ -27,4 +27,8 @@ class JobModel
         return $this->entityManager->getRepository(Job::class)->getJobByCategory($id);
     }
 
+    public function getSearchedJob($value)
+    {
+        return $this->entityManager->getRepository(Job::class)->getSearchedJobs($value);
+    }
 }

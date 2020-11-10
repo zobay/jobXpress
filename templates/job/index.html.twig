@@ -19,6 +19,7 @@
         </tr>
         </thead>
         {% for job in jobs %}
+         {% if job.category is not null %}
             {% if job.category == category %}
                 {% if  loop.index != 2 %}
                     {% set continue = true %}
@@ -30,6 +31,9 @@
         </tr>
         </tbody>
             {% endif %}
+          {% endif %}
+             {% else %}
+             <p> No Job found in this category </p>
         {% endif %}
     {% endfor %}
     </table>

@@ -12,9 +12,9 @@
             <div class="container">
                 <br>
                 <h1>JobXpress</h1>
-                <form class="form-inline">
+                <form class="form-inline" method="post" action="{{ path('search') }}">
                     <div class="form-group mx-sm-3 mb-2">
-                        <input type="search" class="form-control" id="text" placeholder="Search">
+                        <input type="search" class="form-control" name="search" id="text" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-primary mb-2">Go</button>
                 </form>

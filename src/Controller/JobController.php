@@ -45,7 +45,8 @@ class JobController extends AbstractController
         Request $request,
         Category $category,
         JobModel $jobModel,
-        PaginatorInterface $paginator)
+        PaginatorInterface $paginator
+    )
     {
         $jobs = $jobModel->getJobByCategory($category);
         $paginatedData = $paginator->paginate($jobs,
@@ -53,6 +54,28 @@ class JobController extends AbstractController
         return $this->render('job/category.html.twig',[
             'jobs' => $paginatedData,
             'category' => $category
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search")
+     * @param Request $request
+     * @param JobModel $jobModel
+     * @param CategoryModel $categoryModel
+     */
+    public function search(
+        Request $request,
+        JobModel $jobModel,
+        CategoryModel $categoryModel
+    )
+    {
+        $data = $request->request->get('search');
+        $jobs = $jobModel->getSearchedJob($data);
+        $category = $categoryModel->getAllCategory();
+
+        return $this->render('job/index.html.twig',[
+            'categories' => $category,
+            'jobs' => $jobs
         ]);
     }
 }
